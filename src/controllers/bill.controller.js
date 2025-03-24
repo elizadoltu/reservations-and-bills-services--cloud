@@ -1,4 +1,4 @@
-import Bill from "../models/Bill";
+import Bill from "../models/Bill.js";
 
 // Admin Only
 export const createBill = async (req, res) => {
