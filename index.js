@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import billRouter from "./src/routes/bill.routes.js"
 import reservationRouter from "./src/routes/reservation.routes.js"
+import { connectDatabase } from "./src/database/database.js"
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(cors({
  * where the Content-Type header matches the type option.
  */
 app.use(bodyParser.json());
+connectDatabase();
 app.use('/api', billRouter);
 app.use('/api', reservationRouter);
 app.listen(PORT, () => {
