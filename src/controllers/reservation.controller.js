@@ -3,7 +3,7 @@ import Reservation from "../models/Reservation.js";
 // Admin and Client
 export const createReservation = async (req, res) => {
     try {
-        const clientId = req.user.role === 'admin' ? req.body.clientId : req.user.id; 
+        const clientId = req.user.role === 'admin' ? req.body.clientId : req.user._id; 
         if (!clientId) {
             return res.status(400).json({ message: 'Client ID required' });
         }
@@ -23,7 +23,7 @@ export const createReservation = async (req, res) => {
 // Admin all, Client theirs
 export const getReservations = async (req, res) => {
     try {
-        const filter = req.user.role === 'admin' ? {} : { clientId: req.user.id };
+        const filter = req.user.role === 'admin' ? {} : { clientId: req.user._id };
         const reservations = await Reservation.find(filter);
         res.status(200).json(reservations);
     } catch (error) {
