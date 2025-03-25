@@ -15,13 +15,14 @@ export const createBill = async (req, res) => {
 // All for Admin, Client sees theirs
 export const getBills = async (req, res) => {
     try {
-        const filter = {clientId: req.user._id};
+        const filter = req.user.role === 'admin' ? {} : { clientId: req.user.id };
         const bills = await Bill.find(filter);
         res.status(500).json({ bills });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // Any bill for Admin, owning Client
 export const getBill = async (req, res) => {
