@@ -6,7 +6,7 @@ const reservationSchema = new mongoose.Schema({
         required: true
     },
     carId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     startDate: {
