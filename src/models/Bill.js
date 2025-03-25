@@ -7,7 +7,6 @@ const billSchema = new mongoose.Schema({
     },
     reservationId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
     },
     amount: {
         type: Number, 
