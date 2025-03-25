@@ -4,11 +4,10 @@ import { authorizationAdmin, actionsMiddleware } from "../middleware/actionsMidd
 
 const billRouter = express.Router();
 
-billRouter.use(actionsMiddleware);
 billRouter.post('/bill', authorizationAdmin, createBill);
 billRouter.get('/bill', getBills);
 billRouter.get('/bill/:id', getBill);
-billRouter.put('/bill', authorizationAdmin, updateBill);
-billRouter.delete('/bill', authorizationAdmin, deleteBill);
+billRouter.put('/bill/:id', authorizationAdmin, updateBill);
+billRouter.delete('/bill/:id', authorizationAdmin, deleteBill);
 
 export default billRouter;
